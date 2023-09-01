@@ -97,7 +97,10 @@ def compare_search(sizes=[1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7]):
 		lin_time = time_search(linear_search, n_list, -1)
 		bin_time = time_search(binary_search, n_list, -1)
 		tuple_list.append((n, lin_time, bin_time))
+	print(tuple_list)
 	return tuple_list
+
+compare_search()
 
 	###
 
