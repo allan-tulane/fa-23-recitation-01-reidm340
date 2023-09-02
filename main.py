@@ -34,14 +34,16 @@ def _binary_search(mylist, key, left, right):
 	"""
 	### TODO
 	cur_index = (right + left)//2
+	#print(cur_index)
+	#print(mylist[left:right])
 	if mylist[cur_index] == key:
 		return cur_index
-	elif mylist[left:right] == []:
+	if mylist[left:right] == []:
 		return -1
 	elif mylist[cur_index] > key:
-		return _binary_search(mylist, key, left, cur_index-1)
+		return _binary_search(mylist, key, left, cur_index)
 	elif mylist[cur_index] < key:
-		return _binary_search(mylist, key, cur_index+1, right)
+		return _binary_search(mylist, key, cur_index + 1, right)
 	###
 
 def time_search(search_fn, mylist, key):
@@ -86,23 +88,17 @@ def compare_search(sizes=[1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7]):
 	"""
 	### TODO
 	tuple_list = []
-	i = 0
-	while i < len(sizes):
-		n = int(sizes[i])
+	for n in sizes:
 		n_list = []
-		j = 1
-		while j < n:
-			n_list.append(j)
-			j += 1
+		i = 1
+		while i <= n:
+			n_list.append(i)
+			i += 1
 		lin_time = time_search(linear_search, n_list, -1)
 		bin_time = time_search(binary_search, n_list, -1)
-		tuple_list.append((n, lin_time, bin_time))
-	print(tuple_list)
+		n_tuple = (n, lin_time, bin_time)
+		tuple_list.append(n_tuple)
 	return tuple_list
-
-compare_search()
-
-	###
 
 def print_results(results):
 	""" done """
@@ -111,3 +107,4 @@ def print_results(results):
 							floatfmt=".3f",
 							tablefmt="github"))
 
+print_results(compare_search())
