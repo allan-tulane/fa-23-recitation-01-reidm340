@@ -40,12 +40,14 @@ We'll compare the running times of `linear_search` and `binary_search` empirical
 
 - [ ] 4. Describe the worst case input value of `key` for `linear_search`? for `binary_search`?
 
-**TODO: your answer goes here** 
+**TODO: your answer goes here**
+
 The worst case input value of 'key' is a value not contained within the list.
 
 - [ ] 5. Describe the best case input value of `key` for `linear_search`? for `binary_search`? 
 
 **TODO: your answer goes here** 
+
 The best case input value of 'key' is the value at the exact middle index of the list.
 
 - [ ] 6. Complete the `time_search` function to compute the running time of a search function. Note that this is an example of a "higher order" function, since one of its parameters is another function.
@@ -55,6 +57,7 @@ The best case input value of 'key' is the value at the exact middle index of the
 - [ ] 8. Call `print_results(compare_search())` and paste the results here:
 
 **TODO: add your timing results here**
+
 |            n |   linear |   binary |
 |--------------|----------|----------|
 |       10.000 |    0.001 |    0.004 |
@@ -69,7 +72,24 @@ The best case input value of 'key' is the value at the exact middle index of the
 
 **TODO: your answer goes here**
 
+Yes (mostly), the theoretical running times match my results to an extent. 
+
+Theoretically, as n grows by a factor of 10, the results should also grow by a factor of 10. We can see this happening with the actual results. Generally speaking, the time listed in each row is roughly 10 times the one above it.
+
+Additionally, the binary search results tend to grow alongside their theoretical values as predicted by $O(log_2(n))$, although there is a noticable deviance from this trend with the largest values with the results of 8.483 and 103.966 straying somewhat significantly from their expected values. 
+
+But overall, both runtimes roughly match their expected values.
+
 - [ ] 10. Binary search assumes the input list is already sorted. Assume it takes $\Theta(n^2)$ time to sort a list of length $n$. Suppose you know ahead of time that you will search the same list $k$ times. 
   + What is worst-case complexity of searching a list of $n$ elements $k$ times using linear search? **TODO: your answer goes here**
+
+  $O(k*n)$
+
   + For binary search? **TODO: your answer goes here**
+
+  $O(k*log_2(n))+\Theta(n^2)$
+
   + For what values of $k$ is it more efficient to first sort and then use binary search versus just using linear search without sorting? **TODO: your answer goes here**
+
+  $O(k*log_2(n))+\Theta(n^2)<O(k*n)$
+  For all values of $k > 1$, it is more efficient to use binary search versus linear search.
